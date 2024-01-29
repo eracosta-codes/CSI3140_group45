@@ -1,0 +1,13 @@
+
+
+.nav-button {
+  border: 2px solid black;
+  background-color: lightblue;
+  color: #fff;
+}
+
+.nav-button:hover {
+  border: 2px dotted black;
+  background-color: red;
+  color: blue;
+}
