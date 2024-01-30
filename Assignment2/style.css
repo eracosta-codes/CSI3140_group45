@@ -1,0 +1,26 @@
+.backs {
+    padding-top: 80px;
+    display:inline;
+    background-position: bottom;
+    transform: rotate(30deg);
+
+  }
+
+.text{
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+    font-size-adjust: 1.5;
+
+}
+
+.samples{
+    padding: 0.5em;
+    border: 0.5em;
+    border-style: dashed;
+}
+
+.green-Move{
+    color: green;
+    padding-top: 25px;
+    padding-left: 15px;
+}
