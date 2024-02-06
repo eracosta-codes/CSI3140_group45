@@ -1,0 +1,45 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 3  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q7.9 Identify and correct the errors in each of the following segments of code. 
+    [Note: There may be more than one error in each piece of code; unless declarations 
+    are present, assume all variables are properly declared and initialized.]
+
+-->
+
+a) if(age>=65) {
+    document.writeln( "Age greater than or equal to 65" );
+}
+else {
+    document.writeln( "Age is less than 65" );
+
+}
+
+
+b) var x = 1, total = 0;
+   while ( x <= 10 ) {
+        total += x;
+        ++x; 
+    }
+
+
+c) var x=1; 
+   var total=0;
+   while ( x <= 100 ) {
+        total += x;
+        ++x;
+   }
+
+
+
+d) var y = 5;
+   while ( y < 10 ) 
+   {
+        document.writeln( y );
+        ++y;
+    }
+
+// this is an infinite loop, with y = 5 and the condition y > 0
