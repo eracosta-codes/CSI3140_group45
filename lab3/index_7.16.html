@@ -1,0 +1,66 @@
+<!-- CSI 3140 - WWW -->
+<!-- Lab 3  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- Q. 7.16
+
+    Write a script that uses looping to print the following table of values. 
+    Output the results in an HTML5 table. Use CSS to center the data in each column.
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_7.16.css">
+    <title>Looping Table</title>
+</head>
+<body>
+
+    <table>
+        <tr>
+          <th>N</th>
+          <th>10*N</th> 
+          <th>100*N</th>
+          <th>1000*N</th>
+        </tr>
+        <tbody id="tableBody">
+        <!-- Table rows will be added here -->        
+        </tbody>
+
+      </table>
+
+    <script>
+    
+    // Get the table body
+    var tableBody = document.getElementById("tableBody");
+    
+    for (var i = 1, len = 7; i < len; i++) {
+        var row = document.createElement("tr");
+        
+        var cellIndex = document.createElement("td");
+        cellIndex.textContent = i; // Display index
+        row.appendChild(cellIndex);
+        
+        var nValue10 = document.createElement("td");
+        nValue10.textContent = 10 * i; // Display 10 * N
+        row.appendChild(nValue10);
+
+        var nValue100 = document.createElement("td");
+        nValue100.textContent = 100 * i; // Display 100 * N
+        row.appendChild(nValue100);
+
+        var nValue1000 = document.createElement("td");
+        nValue1000.textContent = 1000 * i; // Display 1000 * N
+        row.appendChild(nValue1000);
+        
+        tableBody.appendChild(row);
+    }
+    </script>
+        
+    
+</body>
+</html>
