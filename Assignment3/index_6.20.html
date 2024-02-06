@@ -1,0 +1,60 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 3  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q6.20 Write a script that reads five integers and determines and 
+    outputs markup that displays the largest and smallest integers in the group. 
+    Use only the scripting techniques you learned in this chapter.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q6.2</title>
+
+    <script type="text/javascript"> 
+        var x, y, z, a, b, smallest, largest;
+        var xVal, yVal, zVal, aVal, bVal;
+
+        xVal = window.prompt("Enter first integer: ");
+        yVal = window.prompt("Enter second integer: ");
+        zVal = window.prompt("Enter third integer: ");
+        aVal = window.prompt("Enter fourth integer: ");
+        bVal = window.prompt("Enter fifth integer: ");
+
+        x = parseInt(xVal);
+        y = parseInt(yVal);
+        z = parseInt(zVal);
+        a = parseInt(aVal);
+        b = parseInt(bVal);
+
+        smallest = Math.min(x, y, z, a, b);
+        largest = Math.max(x, y, z, a, b);
+
+        document.writeln("<h2>The smallest is " + smallest + "</h2>");
+        document.writeln("<h2>The largest is " + largest + "</h2><br><br>");
+
+        var values = [x, y, z, a, b];
+
+        for (var i = 0, len = 5; i < len; i++) {
+
+            if (values[i] === smallest || values[i] === largest){
+                document.writeln("<h3> <li> * " + values[i] + " * </li> </h3>");
+            } else {
+                document.writeln("<h3> <li>" + values[i] + "</li> </h3>");
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
