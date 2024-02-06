@@ -1,0 +1,65 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 3  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q6.24 Write a script that calculates the squares and cubes 
+    of the numbers from 0 to 5 and outputs HTML5 text that 
+    displays the resulting values in an HTML5 table format, 
+    as show below. 
+    [Note: This script does not require any input from the user.]
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_6.24.css">
+    <title>Q.6.24</title>
+</head>
+<body>
+
+    <table>
+        <tr>
+          <th>number</th>
+          <th>square</th> 
+          <th>cube</th>
+        </tr>
+        <tbody id="tableBody">
+        <!-- Table rows will be added here -->        
+        </tbody>
+
+      </table>
+
+    <script>
+    
+    // Get the table body
+    var tableBody = document.getElementById("tableBody");
+    
+    for (var i = 0, len = 6; i < len; i++) {
+        var row = document.createElement("tr");
+        
+        var cellIndex = document.createElement("td");
+        cellIndex.textContent = i; // Display index
+        row.appendChild(cellIndex);
+        
+        var square = document.createElement("td");
+        square.textContent = Math.pow(i,2); // Display square
+        row.appendChild(square);
+
+        var cube = document.createElement("td");
+        cube.textContent = Math.pow(i,3); // Display cube
+        row.appendChild(cube);
+
+        
+        tableBody.appendChild(row);
+    }
+    </script>
+        
+    
+</body>
+</html>
