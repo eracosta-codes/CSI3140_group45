@@ -1,0 +1,13 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 25px;
+  }
+.product {
+border: 1px solid #ccc;
+padding: 10px;
+margin: 5px;
+width: 200px;
+display: inline-block;
+}
