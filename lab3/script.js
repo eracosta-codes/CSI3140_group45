@@ -46,6 +46,5 @@ while (continueInput) {
 
     continueInput = confirm("Do you want to enter another product?");
 }
-
 // Display the total retail value
 displayOutput(totalRetailValue);

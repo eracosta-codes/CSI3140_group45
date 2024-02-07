@@ -1,0 +1,1 @@
+This program creates 7 rows and 5 columns and outputs their coordinates

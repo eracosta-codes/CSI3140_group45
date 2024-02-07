@@ -1,0 +1,2 @@
+This function creates 10 rows of alternating <>.
+odd number rows have > nad event number rows have <

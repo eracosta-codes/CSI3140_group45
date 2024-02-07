@@ -1,0 +1,4 @@
+a) The issue is that the f in for is capitalized, and since the loop is looking for x> 1 and x is 100, the loop becomes infinite.
+b) Set i to value % 2, and then do switch(i). One cannot use an expression as a switch
+c) 2 errors, the expression should be for(i =1, i < 19, i +=2), and the second issue is that 19 is and odd number so there will be an index error.
+d)In the line While ( counter < 100 );, make it While ( counter <= 100 );
