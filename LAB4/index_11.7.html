@@ -25,19 +25,27 @@
             const prepositions = ["to", "from", "over", "under", "on"];
             const sentences = [];
             for(var i = 0; i <= 19; i++){
+                if (i == 0){
+                    sentences.push("Once upon a time, ");
+                }
                 var randomArticle1 = Math.floor(Math.random() * 4);
                 var randomNoun1 = Math.floor(Math.random() * 4);
                 var randomArticle2 = Math.floor(Math.random() * 4);
                 var randomNoun2 = Math.floor(Math.random() * 4);
                 var randomVerb = Math.floor(Math.random() * 4);
                 var randomPreposition = Math.floor(Math.random() * 4);
-                sentences.push(articles[randomArticle1] + " ");
+                var firstWord = articles[randomArticle1];
+                var firstWordCap = firstWord.charAt(0).toUpperCase() + firstWord.substring(1);
+                sentences.push(firstWordCap + " ");
                 sentences.push(nouns[randomNoun1] + " ");
                 sentences.push(verbs[randomVerb] + " ");
                 sentences.push(prepositions[randomPreposition] + " ");
                 sentences.push(articles[randomArticle2] + " ");
                 sentences.push(nouns[randomNoun2] + ".");
-                sentences.push("<br>");  
+                sentences.push("<br>"); 
+                if (i == 19){
+                    sentences.push("THE END ");
+                } 
             }
             var story = document.getElementById('story');
             story.innerHTML = sentences.join('');
