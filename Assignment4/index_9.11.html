@@ -1,0 +1,35 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 4  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 9.11
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q11.7</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/javascript"> 
+        function getRandomRange(min, max){
+            return Math.random() * (Math.ceil(max) - Math.ceil(min)) + Math.ceil(min);
+        }
+        var nA = Math.ceil(getRandomRange(1,2));
+        var nB = Math.ceil(getRandomRange(1,100));
+        var nC = Math.ceil(getRandomRange(0,9));
+        var container = document.getElementById("container");
+        container.innerHTML = "nA: " + nA + "<br>" +
+                                  "nB: " + nB + "<br>" +
+                                  "nC: " + nC;
+        
+    </script>
+    
+</body>
+</html>
