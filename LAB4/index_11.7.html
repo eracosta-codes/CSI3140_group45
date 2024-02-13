@@ -1,0 +1,47 @@
+<!-- CSI 3140 - WWW -->
+<!-- LAB 4  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 11.7
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q11.7</title>
+
+    <script type="text/javascript"> 
+        
+        const articles = ["the", "a","one", "some","any"];
+        const nouns = ["boy", "girl", "dog", "town","car"];
+        const verbs = ["drove", "jumped", "ran", "walked", "skipped"];
+        const prepositions = ["to", "from", "over", "under", "on"];
+        var sentences;
+        for(var i = 0; i <= 19; i++){
+            var randomArticle1 = Math.floor(Math.random() * 4);
+            var randomNoun1 = Math.floor(Math.random() * 4);
+            var randomArticle2 = Math.floor(Math.random() * 4);
+            var randomNoun2 = Math.floor(Math.random() * 4);
+            var randomVerb = Math.floor(Math.random() * 4);
+            var randomPreposition = Math.floor(Math.random() * 4);
+            sentences.concat(articles(randomArticle1) + " ");
+            sentences.concat(articles(randomNoun1) + " ");
+            sentences.concat(articles(randomVerb) + " ");
+            sentences.concat(articles(randomPreposition) + " ");
+            sentences.concat(articles(randomArticle2) + " ");
+            sentences.concat(articles(randomNoun2) + ".");
+            sentences.concat("\n");
+        }
+        document.writeln(sentences);
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
