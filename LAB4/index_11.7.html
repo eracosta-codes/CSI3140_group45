@@ -31,12 +31,12 @@
                 var randomNoun2 = Math.floor(Math.random() * 4);
                 var randomVerb = Math.floor(Math.random() * 4);
                 var randomPreposition = Math.floor(Math.random() * 4);
-                sentences.push(articles(randomArticle1) + " ");
-                sentences.push(nouns(randomNoun1) + " ");
-                sentences.push(verbs(randomVerb) + " ");
-                sentences.push(prepositions(randomPreposition) + " ");
-                sentences.push(articles(randomArticle2) + " ");
-                sentences.push(nouns(randomNoun2) + ".");
+                sentences.push(articles[randomArticle1] + " ");
+                sentences.push(nouns[randomNoun1] + " ");
+                sentences.push(verbs[randomVerb] + " ");
+                sentences.push(prepositions[randomPreposition] + " ");
+                sentences.push(articles[randomArticle2] + " ");
+                sentences.push(nouns[randomNoun2] + ".");
                 sentences.push("<br>");  
             }
             var story = document.getElementById('story');
