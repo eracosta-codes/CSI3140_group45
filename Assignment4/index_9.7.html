@@ -1,0 +1,44 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 4  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 9.7
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q11.7</title>
+</head>
+<body>
+    <div id="story"></div>
+    <script type="text/javascript"> 
+        function start(){
+            var button = document.getElementById( "calculateButton" );
+            button.addEventListener( "click", displayArea, false );
+        } 
+        function displayArea(){
+            var inputField = document.getElementById( "radiusField" );
+            var radius = parseFloat( inputField.value );
+            var result = document.getElementById( "result" );
+            result.innerHTML = "The circle's area is: " + sphereArea( radius );
+        } 
+        function sphereArea(radius ){
+            return  Math.PI * Math.pow( radius, 2 );
+        } 
+        window.addEventListener( "load", start, false );
+        
+    </script>
+    <form action = "#">
+        <p><label>Radius:
+        <input id = "radiusField" type = "number"></label>
+        <input id = "calculateButton" type = "button" value = "Calculate"></p>
+        </form>
+        <p id = "result"></p>
+</body>
+</html>
