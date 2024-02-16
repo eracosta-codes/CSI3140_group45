@@ -1,0 +1,58 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 4  -->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 9.21 Write a script that simulates coin tossing. 
+    Let the program toss the coin each time the user clicks the Toss button. 
+    Count the number of times each side of the coin appears. Display the results. 
+    The program should call a separate function flip that takes no 
+    arguments and returns false for tails and true for heads. 
+    [Note: If the program realistically simulates the coin tossing, 
+    each side of the coin should appear approximately half the time.]
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Toss</title>
+</head>
+<body>
+
+    <h2>Coin Toss</h2>
+
+    <button onclick="coinFlip()">Flip Coin</button>
+
+    <p>Heads: <span id="headCount">0</span></p>
+    <p>Tail: <span id="tailCount">0</span></p>
+
+    <script>
+        var headCount = 0;
+        var tailCount = 0;
+
+        function randomBoolean(){
+            return Math.random() < 0.5;
+        }
+
+        function coinFlip(){
+            var result = randomBoolean();
+            if(result){
+                headCount++;
+            } else {
+                tailCount++
+            }
+            increaseCount();
+        }
+
+        function increaseCount(){
+            document.getElementById("headCount").innerText = headCount;
+            document.getElementById("tailCount").innerText = tailCount;
+        }
+    </script>
+</body>
+</html>
