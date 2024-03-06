@@ -1,0 +1,57 @@
+<!-- CSI 3140 - WWW -->
+<!-- Lab 5-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 13.3
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q11.7</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <table id = "canvas">
+    <caption>Hold <em>Ctrl</em> (or <em>Control</em>) to draw blue.
+    Hold <em>Shift</em> to draw red.</caption>
+    <tbody id = "tablebody"></tbody>
+    </table>
+    <script>
+        function createCanvas() {  
+            var side = 100;
+            var tbody = document.getElementById( "tablebody" );
+            for ( var i = 0; i < side; ++i ){
+                var row = document.createElement( "tr" );
+                for ( var j = 0; j < side; ++j ){
+                    var cell = document.createElement( "td" );
+                    row.appendChild( cell );
+                } // end for
+                tbody.appendChild( row );
+            } // end for
+            document.getElementById( "canvas" ).addEventListener("mousemove", processMouseMove, false );
+        }
+        function processMouseMove( e ){
+            if ( e.target.tagName.toLowerCase() == "td" ){
+                if (e.ctrlKey){
+                    e.target.setAttribute( "class", "blue" );
+                }
+                if (e.shiftKey){
+                    e.target.setAttribute( "class", "red" );
+                }
+                if (e.altKey){
+                    e.target.setAttribute( "class", "white" );
+                }
+            }
+        }
+        window.addEventListener( "load", createCanvas, false );
+    </script>
+</body>
+</html>

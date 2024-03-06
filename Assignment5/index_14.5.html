@@ -1,0 +1,48 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 5-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 14.5
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q14.5</title>
+    <link type="text/css" rel="stylesheet" href="default.css">
+    <link href="https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+    <canvas id="drawpad" class="drawpad" width="500" height="250"></canvas>
+
+    <script>
+        var context = drawpad.getContext("2d");
+        context.shadowOffsetX = 2;
+        context.shadowOffsetY = 5;
+        context.shadowBlur = 6;
+        context.shadowColor = "gray";
+
+        var text = "HTML 5 Canvas";
+        var x = 50;
+        var y = 100;
+        
+        // Draw the underlined text
+        context.font = "bold 20px Arial";
+        context.fillText(text, x, y);
+        var textWidth = context.measureText(text).width;
+        context.beginPath();
+        context.moveTo(x, y + 2); // Move to the start of the underline
+        context.lineTo(x + textWidth, y + 2); // Draw a line to the end of the text
+        context.strokeStyle = "black"; // Color of the underline
+        context.stroke(); // Draw the line
+    </script>
+</body>
+</html>
