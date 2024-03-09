@@ -1,0 +1,75 @@
+<!-- CSI 3140 - WWW -->
+<!-- Lab 5-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 13.7
+    Use CSS absolute positioning, mousedown, mousemove, mouseup and the clientX/clientY 
+    properties of the event object to create a program that allows you to drag and drop 
+    an image. When the user clicks the image, it should follow the cursor until the mouse 
+    button is released.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drag and Drop Image</title>
+<style>
+    #drag-image {
+        position: absolute;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<img id="drag-image" src="https://t3.ftcdn.net/jpg/02/95/44/22/360_F_295442295_OXsXOmLmqBUfZreTnGo9PREuAPSLQhff.jpg" alt="Draggable Image">
+
+<script>
+    var dragImage = document.getElementById('drag-image');
+
+    var x;
+    var y;
+
+    var offsetX = 0;
+    var offsetY = 0;
+
+    var isDragging = false;
+
+    dragImage.addEventListener('mousedown', function(event) {
+        // Set flag to indicate dragging has started
+        isDragging = true;
+
+        x = event.clientX;
+        y = event.clientY;
+
+        var rect = dragImage.getBoundingClientRect();
+        offsetX = x - rect.left;
+        offsetY = y - rect.top;
+
+        dragImage.style.cursor = 'move';
+    });
+
+    document.addEventListener('mousemove', function(event) {
+        if (isDragging) {
+            var newX = event.clientX - offsetX;
+            var newY = event.clientY - offsetY;
+
+            dragImage.style.left = newX + 'px';
+            dragImage.style.top = newY + 'px';
+        }
+    });
+
+    document.addEventListener('mouseup', function(event) {
+        isDragging = false;
+
+        dragImage.style.cursor = 'pointer';
+    });
+</script>
+
+</body>
+</html>

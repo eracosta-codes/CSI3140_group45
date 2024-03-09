@@ -1,0 +1,71 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 5-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 14.14 (Moving Circle) Crate a square canvas with a width and height of 500. 
+    Write a script that continuously moves a circle counterclockwise in a diamond pattern 
+    so that the circle touches the center of each edge of the canvas
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moving Circle</title>
+<style>
+    canvas {
+        border: 1px solid #000;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const radius = 10;
+    const speed = 1; // Speed of the circle
+
+    // Function to draw the circle
+    function drawCircle(x, y) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
+    }
+
+    // Animate the movement of the circle
+    let angle = Math.PI / 4; // Start angle (45 degrees in radians)
+
+    function animate() {
+        // Calculate new position of the circle
+        const newX = canvas.width / 2 + Math.cos(angle) * (canvas.width / 2);
+        const newY = canvas.height / 2 + Math.sin(angle) * (canvas.height / 2);
+
+        drawCircle(newX, newY);
+
+        // Update angle for next frame (moving in a diamond pattern)
+        angle -= 0.01; // Decrease angle for counterclockwise motion
+
+        if (angle < -Math.PI) {
+            angle += 2 * Math.PI; // Keep angle within bounds
+        }
+
+        // Request the next frame
+        requestAnimationFrame(animate);
+    }
+
+    // Start the animation
+    animate();
+</script>
+
+</body>
+</html>
+
+

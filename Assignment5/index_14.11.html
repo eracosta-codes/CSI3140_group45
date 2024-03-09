@@ -1,0 +1,50 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 5-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 14.11 (Concentric Circles) Write a script that draws eight concentric circles. 
+    For each new circle, increase value of the radius by 5. Vary the circles’ colors.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concentric Circles</title>
+<style>
+    canvas {
+        border: 1px solid #000;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'cyan'];
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    for (let i = 7; i >= 0; i--) {
+        const radius = 10 + (i * 5); // Increase radius by 5 for each new circle
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.fillStyle = colors[i]; 
+        ctx.fill();
+        ctx.closePath();
+    }
+</script>
+
+</body>
+</html>
+
+

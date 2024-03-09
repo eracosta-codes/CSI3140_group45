@@ -1,0 +1,52 @@
+<!-- CSI 3140 - WWW -->
+<!-- Assignment 5-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 14.8 (Vertical Linear Gradient) 
+    Draw a nonrectangular shape using lines, 
+    then add a vertical linear gradient to the shape with three color stops.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vertical Linear Gradient</title>
+<style>
+    canvas {
+        border: 1px solid #000;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Draw a non-rectangular shape using lines
+    ctx.beginPath();
+    ctx.moveTo(100, 100);
+    ctx.lineTo(300, 100);
+    ctx.lineTo(200, 300);
+    ctx.closePath();
+    ctx.fillStyle = '#fff'; // Fill color before applying gradient
+    ctx.fill();
+
+    // Add vertical linear gradient with three color stops
+    const gradient = ctx.createLinearGradient(0, 100, 0, 300);
+    gradient.addColorStop(0, '#ff0000'); // Red
+    gradient.addColorStop(0.5, '#00ff00'); // Green
+    gradient.addColorStop(1, '#0000ff'); // Blue
+
+    ctx.fillStyle = gradient;
+    ctx.fill();
+</script>
+
+</body>
+</html>

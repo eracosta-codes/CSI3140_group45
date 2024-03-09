@@ -1,0 +1,128 @@
+<!-- CSI 3140 - WWW -->
+<!-- Lab 5-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 14.17 (Painting) 
+    Create a painting application that allows the you to create art by clicking and 
+    dragging the mouse across the canvas. Include options for changing the drawing 
+    color and line thickness. Provide red, green and blue sliders that allow you to 
+    select the RGB color. Include a color swatch below the three sliders so that as 
+    you move each slider, the color swatch shows you the current drawing color. 
+    Provide a line-width dialog with a single slider that controls the thickness of 
+    the line that you’ll draw. Also include options that allow you to turn the cursor 
+    into an eraser, to clear the screen and to save the current drawing. 
+    At any point, you should be able to clear the entire draw- ing from the canvas.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painting Application</title>
+<style>
+    #canvas {
+        border: 1px solid #000;
+    }
+
+    #color-swatch {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #000;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="canvas" width="800" height="600"></canvas>
+<div>
+    <label for="red">Red:</label>
+    <input type="range" id="red" min="0" max="255" value="0">
+    <br>
+    <label for="green">Green:</label>
+    <input type="range" id="green" min="0" max="255" value="0">
+    <br>
+    <label for="blue">Blue:</label>
+    <input type="range" id="blue" min="0" max="255" value="0">
+    <br>
+    <div id="color-swatch"></div>
+    <br>
+    <label for="line-width">Line Width:</label>
+    <input type="range" id="line-width" min="1" max="20" value="5">
+    <br>
+    <button id="eraser">Eraser</button>
+    <button id="clear">Clear</button>
+    <button id="save">Save</button>
+</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const colorSwatch = document.getElementById('color-swatch');
+    const redInput = document.getElementById('red');
+    const greenInput = document.getElementById('green');
+    const blueInput = document.getElementById('blue');
+    const lineWidthInput = document.getElementById('line-width');
+    const eraserButton = document.getElementById('eraser');
+    const clearButton = document.getElementById('clear');
+    const saveButton = document.getElementById('save');
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    function draw(e) {
+        if (!isDrawing) return;
+
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.strokeStyle = `rgb(${redInput.value}, ${greenInput.value}, ${blueInput.value})`;
+        ctx.lineWidth = lineWidthInput.value;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+
+    redInput.addEventListener('input', updateColorSwatch);
+    greenInput.addEventListener('input', updateColorSwatch);
+    blueInput.addEventListener('input', updateColorSwatch);
+
+    function updateColorSwatch() {
+        colorSwatch.style.backgroundColor = `rgb(${redInput.value}, ${greenInput.value}, ${blueInput.value})`;
+    }
+
+    eraserButton.addEventListener('click', () => {
+        ctx.strokeStyle = '#ffffff'; // Set color to white for eraser
+        ctx.lineWidth = lineWidthInput.value;
+    });
+
+    clearButton.addEventListener('click', () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    saveButton.addEventListener('click', () => {
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'painting.png';
+        link.click();
+    });
+</script>
+
+</body>
+</html>
