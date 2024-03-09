@@ -15,7 +15,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q11.7</title>
     <style>
-
+        .blue {
+            background-color: blue;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .white {
+            background-color: white;
+        }
+        
+        /* Additional styles for table and cells */
+        #canvas {
+            border-collapse: collapse;
+        }
+        
+        #canvas td {
+            width: 5px; /* Adjust cell size as needed */
+            height: 5px;
+        }
     </style>
 </head>
 <body>
@@ -52,13 +72,14 @@
                 }
             }
         }
-        function clearAll(){
-            var tbody = document.getElementById("canvas"),
-                tCanvas = tbody.getContext("2d");
-            tCanvas.clearRect(0,0,tbody.height, tbody.width);
-
+        function clearAll() {
+            var cells = document.querySelectorAll("#tablebody td");
+            cells.forEach(function(cell) {
+                cell.removeAttribute("class");
+            });
         }
-        window.addEventListener( "load", createCanvas, false );
+        
+        window.addEventListener("load", createCanvas, false);
     </script>
 </body>
 </html>
