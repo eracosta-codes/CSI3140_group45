@@ -1,0 +1,87 @@
+<!-- CSI 3140 - WWW -->
+<!-- Lab 6-->
+<!-- @StevenWilson & @EdgarAcosta -->
+
+<!-- 
+
+    Q 15.7
+
+    (Nutrition Information XML Document) Create an XML document 
+    that marks up the nutrition facts for a package of Grandma 
+    White’s cookies. A package of cookies has a serving size of 
+    1 package and the following nutritional value per serving: 260 calories, 
+    100 fat calories, 11 grams of fat, 2 grams of saturated fat, 5 milligrams of cholesterol,
+    210 milligrams of sodium, 36 grams of total carbohydrates, 2 grams of fiber, 
+    15 grams of sugars and 5 grams of protein. Name this document nutrition.xml. 
+    Load the XML document into your web browser. [Hint: Your markup should contain 
+    elements describing the product name, serving size/amount, calories, sodium, 
+    cholesterol, pro- teins, etc. Mark up each nutrition fact/ingredient listed above.]
+
+-->
+
+
+<!-- I ran my own server using python to be able to open the xml file on the broweser -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandma White’s cookies</title>
+</head>
+<body>
+
+    <h1>Nutrition Facts</h1>
+    <div id="nutritionFacts"></div>
+
+    <script>
+        fetch('nutrition.xml') // load XML doc
+            .then(response => response.text())
+            .then(data => {  //parse xml doc
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, 'text/xml');
+
+                console.log('XML document parsed successfully:', xmlDoc);
+
+        // extract info
+        const productName = xmlDoc.querySelector('productName').textContent;
+        const servingSize = xmlDoc.querySelector('servingSize').textContent;
+        const calories = xmlDoc.querySelector('calories').textContent;
+        const fatCalories = xmlDoc.querySelector('fatCalories').textContent;
+        const fat = xmlDoc.querySelector('fat').textContent;
+        const saturatedFat = xmlDoc.querySelector('saturatedFat').textContent;
+        const cholesterol = xmlDoc.querySelector('cholesterol').textContent;
+        const sodium = xmlDoc.querySelector('sodium').textContent;
+        const carbohydrates = xmlDoc.querySelector('carbohydrates').textContent;
+        const fiber = xmlDoc.querySelector('fiber').textContent;
+        const sugars = xmlDoc.querySelector('sugars').textContent;
+        const protein = xmlDoc.querySelector('protein').textContent;
+
+        console.log('Nutrition facts extracted successfully:',
+                    productName, servingSize, calories, fatCalories, fat, saturatedFat,
+                    cholesterol, sodium, carbohydrates, fiber, sugars, protein);
+
+        // display info
+        document.getElementById('nutritionFacts').innerHTML = `
+            <p>  Product Name:  ${productName} </p>
+            <p>  Serving Size:  ${servingSize} </p>
+            <p>  Calories:  ${calories} </p>
+            <p>  Fat Calories:  ${fatCalories} </p>
+            <p>  Fat:  ${fat} </p>
+            <p>  Saturated Fat:  ${saturatedFat} </p>
+            <p>  Cholesterol:  ${cholesterol} </p>
+            <p>  Sodium:  ${sodium} </p>
+            <p>  Carbohydrates:  ${carbohydrates} </p>
+            <p>  Fiber:  ${fiber} </p>
+            <p>  Sugars:  ${sugars} </p>
+            <p>  Protein:  ${protein} </p>
+            
+            `;
+        })
+        .catch(error => console.error('Error loading xml doc: ', error));
+   
+   </script>
+    
+</body>
+</html>
