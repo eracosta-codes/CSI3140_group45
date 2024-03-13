@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema:xs="http://www.w3.org/2001/schema">
+    <xs:element name = "cookie">
+        <xs:element name = "productName" type = "xsd:string"/>
+        <xs:element name = "servingSize" type = "xsd:string"/>
+        <xs:element name ="nutrition facts">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name = "calories" type = "xsd:string"/>
+                    <xs:element name = "fatCalories" type = "xsd:string"/>
+                    <xs:element name = "fat" type = "xsd:string"/>
+                    <xs:element name = "saturatedFat" type = "xsd:string"/>
+                    <xs:element name = "cholesterol" type = "xsd:string"/>
+                    <xs:element name = "sodium" type = "xsd:string"/>
+                    <xs:element name = "carbohydrates" type = "xsd:string"/>
+                    <xs:element name = "fiber" type = "xsd:string"/>
+                    <xs:element name = "sugars" type = "xsd:string"/>
+                    <xs:element name = "protein" type = "xsd:string"/>
+                <xs:sequence/>
+            <xs:complexType/>
+        <xs:element/>
+    <xs:element/>
+<xs:schema/>
+
