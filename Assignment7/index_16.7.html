@@ -90,6 +90,21 @@
                     }
                 })
 
+                var blacklistedEmails = [];
+                $.ajax({
+                    type: GET,
+                    url: 'unallowed.xml',
+                    dataType: 'xml',
+                    success: function(xml){
+                        $(xml).find('email').each(function(){
+                            blacklistedEmails.push($(this).text());
+                        });
+                    },
+                    error: function(){
+                        console.log('Error loading banned emails. ')
+                    }
+                })
+
                 if(invalidArray.length >0){
                     alert('Invalid email addresses: ' + invalidArray.join(', '));
                 }
