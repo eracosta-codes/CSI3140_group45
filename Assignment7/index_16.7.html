@@ -78,6 +78,20 @@
     </form>
     <script>
         $(document).ready(function(){
+            var blacklistedEmails = [];
+                $.ajax({
+                    type: GET,
+                    url: 'unallowed.xml',
+                    dataType: 'xml',
+                    success: function(xml){
+                        $(xml).find('email').each(function(){
+                            blacklistedEmails.push($(this).text());
+                        });
+                    },
+                    error: function(){
+                        console.log('Error loading banned emails. ')
+                    }
+                })
             $('#feedbackForm').submit(function(event){
                 event.preventDefault();
 
@@ -94,24 +108,14 @@
                     alert('Invalid email addresses: ' + invalidArray.join(', '));
                 }
 
-                var blacklistedEmails = [];
-                $.ajax({
-                    type: GET,
-                    url: 'unallowed.xml',
-                    dataType: 'xml',
-                    success: function(xml){
-                        $(xml).find('email').each(function(){
-                            blacklistedEmails.push($(this).text());
-                        });
-                    },
-                    error: function(){
-                        console.log('Error loading banned emails. ')
-                    }
-                })
-
+                var email = $('input[name=email]').val();
+                if (blacklistedEmails.includes(email)) {
+                    alert('This email is blacklisted.');
+                    return; 
+                }
                 var devData = {
                     'comments': $('comments').val(),
-                    'email': $('email').val(),
+                    'email': email,
                     'rating': $('input[name=rating]:checked').val()
                 };
                 $.ajax({
