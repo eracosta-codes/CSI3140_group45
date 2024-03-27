@@ -81,6 +81,19 @@
             $('#feedbackForm').submit(function(event){
                 event.preventDefault();
 
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                var invalidArray = [];
+                $('input[name=email]').each(function(){
+                    var email = $(this).val();
+                    if (!emailRegex.test(email)) {
+                        invalidArray.push(email);
+                    }
+                })
+
+                if(invalidArray.length >0){
+                    alert('Invalid email addresses: ' + invalidArray.join(', '));
+                }
+
                 var devData = {
                     'comments': $('comments').val(),
                     'email': $('email').val(),
