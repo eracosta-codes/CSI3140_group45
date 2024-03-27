@@ -76,5 +76,32 @@
             <input type = "reset" value = "Clear">
         </p>
     </form>
+    <script>
+        $(document).ready(function(){
+            $('#feedbackForm').submit(function(event){
+                event.preventDefault();
+
+                var devData = {
+                    'comments': $('comments').val(),
+                    'email': $('email').val(),
+                    'rating': $('input[name=rating]:checked').val()
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'verify_feedback.php',
+                    data: devData,
+                    dataType: 'json',
+                    encode: true
+                })
+                .done(function(data){
+                    $('#feedbackMessage').html(data.message);
+                })
+                .fail(function(data){
+                    $('feedbackMessage').html('Error: failed to submit feedback');
+                })
+            });
+
+        })
+    </script>
 </body>
 </html>
