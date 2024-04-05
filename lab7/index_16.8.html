@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog - Boats</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #productTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    #productTable th, #productTable td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #productTable th {
+      text-align: left;
+      background-color: #f2f2f2;
+    }
+
+    #productTable img {
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+    }
+
+    #description {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<table id="productTable">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Thumbnail</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<div id="description"></div>
+
+<script>
+  function fetchData(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        callback(JSON.parse(xhr.responseText));
+      }
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
+  }
+
+  function showDescription(id) {
+    fetchData('descriptions.json', function(descriptions) {
+      var description = descriptions.find(item => item.id === id);
+      document.getElementById('description').innerText = description.description;
+    });
+  }
+
+  function displayProducts() {
+    fetchData('products.json', function(products) {
+      var tableBody = document.querySelector('#productTable tbody');
+      tableBody.innerHTML = '';
+      products.forEach(function(product) {
+        var row = tableBody.insertRow();
+        row.insertCell(0).innerText = product.title;
+        var thumbnailCell = row.insertCell(1);
+        var thumbnailImg = document.createElement('img');
+        thumbnailImg.src = 'thumbnails/' + product.thumbnail;
+        thumbnailImg.setAttribute('data-id', product.id);
+        thumbnailImg.addEventListener('mouseover', function() {
+          displayFullImage(this);
+        });
+        thumbnailImg.addEventListener('mouseout', function() {
+          displayThumbnail(this);
+        });
+        thumbnailCell.appendChild(thumbnailImg);
+        row.insertCell(2).innerText = product.price;
+      });
+    });
+  }
+
+  function displayFullImage(img) {
+    var id = img.getAttribute('data-id');
+    fetchData('images.json', function(fullImages) {
+      var fullImage = fullImages.find(item => item.id === parseInt(id));
+      img.src = 'full_images/' + fullImage.image;
+    });
+  }
+
+  function displayThumbnail(img) {
+    var id = img.getAttribute('data-id');
+    fetchData('thumbnails.json', function(thumbnails) {
+      var thumbnail = thumbnails.find(item => item.id === parseInt(id));
+      img.src = 'thumbnails/' + thumbnail.thumbnail;
+    });
+  }
+
+  window.onload = function() {
+    displayProducts();
+  };
+</script>
+
+</body>
+</html>
+
