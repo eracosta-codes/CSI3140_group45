@@ -39,11 +39,18 @@
         if(!$iserror){
             $query = "INSERT INTO Urltable(url, description) VALUES ($url, $description)";
 
-            if(!($database = pg_connect("localhost","iw3htp","password")))
+            if(!($database = mysqli_connect("localhost","iw3htp","password")))
             die("<p>Could not connect to database</p>");
 
-            if(!PgSql_select_db("URL", $database))
-            die("<p>Could not open URL database</p<");
+            if(!mysqli_select_db($database, "URL"))
+            die("<p>Could not open URL</p>");
+            
+            if(!($result = mysqli_query($database,$query))){
+                print("<p>Could not execute query</p>");
+                die();
+            }
+            mysqli_close($database);
+            die();
         }
     }
 ?>
